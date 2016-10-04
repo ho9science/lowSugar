@@ -9,12 +9,15 @@ class LowersugarSpider(scrapy.Spider):
 	]
 
 	def parse(self, response):
-		filename = 'jusik-' + response.url.split("/")[-2] + '.html'
-		with open(filename, 'wb') as f:
-			f.write(response.body)
+		#filename = 'jusik-' + response.url.split("/")[-2] + '.html'
+		#with open(filename, 'wb') as f:
+		#	f.write(response.body)
 		
+		items = response.xpath('//td')
 
-		#for tr in response.xpath('//div[@id="cF1001"]'):
-		#	text= tr.xpath('table[@class="gHead01"]//td/text()').extract_first()
-		#	author = "123"
-		#	print("{}: {} ".format(author, text))
+		for item in items:
+			my_item = LowersugarItem()
+			my_item['text'] = item.xpath('/text()').extract()
+			var = item.xpath('/text()').extract()
+			print(var)
+			
