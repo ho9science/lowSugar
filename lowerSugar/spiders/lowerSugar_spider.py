@@ -13,11 +13,11 @@ class LowersugarSpider(scrapy.Spider):
 		#with open(filename, 'wb') as f:
 		#	f.write(response.body)
 		
-		items = response.xpath('//td')
+		items = response.xpath('//tr')
 		var = 0
 		for item in items:
 			my_item = LowersugarItem()
-			my_item['text'] = item.xpath('//span/text()').extract()
+			my_item['text'] = item.xpath('td/span/text()').extract()
 			#var = item.xpath('./text()').extract()
 			var+=1
 			print(my_item['text']);
