@@ -9,7 +9,7 @@ from scrapy import log
 
 class LowersugarPipeline(object):
 
-	collection_name = 'scrapy_items7'
+	collection_name = 'stock_6'
 
 	def __init__(self, mongo_uri, mongo_db):
 		self.mongo_uri = mongo_uri

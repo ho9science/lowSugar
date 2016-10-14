@@ -21,6 +21,7 @@ class LowersugarItem(scrapy.Item):
 	totalequities = scrapy.Field()
 	totalequitiesruling = scrapy.Field()
 	totalequitiesnon = scrapy.Field()
+	eqities = scrapy.Field()
 	cashbusiness = scrapy.Field()
 	cashinvestment = scrapy.Field()
 	cashfinance = scrapy.Field()
