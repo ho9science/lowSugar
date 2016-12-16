@@ -9,7 +9,7 @@ from scrapy import log
 
 class LowersugarPipeline(object):
 
-	collection_name = 'stock_6'
+	collection_name = 'stock_7'
 
 	def __init__(self, mongo_uri, mongo_db):
 		self.mongo_uri = mongo_uri
@@ -36,6 +36,6 @@ class LowersugarPipeline(object):
 				valid = False
 				log.msg("add mongo db error", level=log.DEBUG, spider=spider)
 		if valid:
-			self.db[self.collection_name].insert(dict(item))
+			self.db[self.collection_name].update({'code': int(item['code'])}, dict(item), upsert=True)
 			log.msg("add mongo db success", level=log.DEBUG, spider=spider)
 		return item
