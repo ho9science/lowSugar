@@ -2,14 +2,14 @@ import scrapy
 from lowerSugar.items import LowersugarItem
 class LowersugarSpider(scrapy.Spider):
 
-	with open('test.txt', 'r') as f:
+	with open('realcodelist.txt', 'r') as f:
 		var = f.readlines()
 	f.close
 	#http://companyinfo.stock.naver.com/v1/company/ajax/cF1001.aspx?cmp_cd=005930&fin_typ=0&freq_typ=A&extY=1&extQ=1
 	url = []
 	for nandc in var:
 		value = nandc.split(" ")
-		url.append('http://companyinfo.stock.naver.com/v1/company/ajax/cF1001.aspx?cmp_cd='+value[1]+'&fin_typ=0&freq_typ=A&extY=1&extQ=1')
+		url.append('http://companyinfo.stock.naver.com/v1/company/ajax/cF1001.aspx?cmp_cd='+value[0]+'&fin_typ=0&freq_typ=A&extY=1&extQ=1')
 	
 	name = "lowerSugar"
 	start_urls = url
@@ -18,7 +18,7 @@ class LowersugarSpider(scrapy.Spider):
 	#    yield scrapy.Request('http://www.example.com/1.html', self.parse) 
 
 	def parse(self, response):
-		year = '3' #2015
+		year = '4' #2016
 		items = response.xpath('//tr')
 		var = 0
 		refine = 0
@@ -28,7 +28,10 @@ class LowersugarSpider(scrapy.Spider):
 				data = item.xpath('td['+year+']/span/text()').extract()
 				temp = "".join(str(x) for x in data)
 				temp = temp.replace(",","")
-				refinedata = float(temp)
+				try :
+					refinedata = float(temp)
+				except :
+					refinedata = float('NaN')
 			if var == 0 :
 				codeUrl = response.url
 				code = codeUrl.split('cmp_cd',7)

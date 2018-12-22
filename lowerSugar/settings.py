@@ -9,7 +9,7 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'lowerSugar'
+BOT_NAME = 'sugar_day'
 
 SPIDER_MODULES = ['lowerSugar.spiders']
 NEWSPIDER_MODULE = 'lowerSugar.spiders'
@@ -62,9 +62,9 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-	'lowerSugar.pipelines.LowersugarPipeline': 300,
-}
+# ITEM_PIPELINES = {
+# 	'lowerSugar.pipelines.LowersugarPipeline': 300,
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

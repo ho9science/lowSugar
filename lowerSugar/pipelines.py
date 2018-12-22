@@ -9,7 +9,7 @@ from scrapy import log
 
 class LowersugarPipeline(object):
 
-	collection_name = 'stock_6'
+	collection_name = 'stockvalue201611'
 
 	def __init__(self, mongo_uri, mongo_db):
 		self.mongo_uri = mongo_uri
@@ -19,7 +19,7 @@ class LowersugarPipeline(object):
 	def from_crawler(cls, crawler):
 		return cls(
 			mongo_uri=crawler.settings.get('mongodb://localhost:27017'),
-			mongo_db = crawler.settings.get('mongo_database', "mongo_database")
+			mongo_db = crawler.settings.get('mongo_database', "value_list")
 		)
 
 	def open_spider(self, spider):
