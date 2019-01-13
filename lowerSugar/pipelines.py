@@ -36,6 +36,6 @@ class LowersugarPipeline(object):
 				valid = False
 				log.msg("add mongo db error", level=log.DEBUG, spider=spider)
 		if valid:
-			self.db[self.collection_name].insert(dict(item))
+			self.db[self.collection_name].update({'code': int(item['code'])}, dict(item), upsert=True)
 			log.msg("add mongo db success", level=log.DEBUG, spider=spider)
 		return item
