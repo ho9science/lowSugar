@@ -1,11 +1,12 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
+import pandas
+import io
 
-#need to getcko driver
 browser = webdriver.Firefox()
 
-url = "url"
+url = "https://finance.naver.com/sise/sise_rise.nhn"
 browser.get(url)
 
 browser.implicitly_wait(3)
@@ -25,10 +26,12 @@ browser.find_element_by_xpath('//a[@href="javascript:fieldSubmit()"]').click()
 
 html = browser.page_source
 soup = BeautifulSoup(html, 'html.parser')
-table = soup.find('table', attrs={'class':'type_2'})
 
-table_body = table.find('tbody')
-rows = table_body.find_all('tr')
+datas = []
 for row in rows:
 	cols = row.find_all('td')
-	# print(cols)
+	if len(cols) > 1:
+		tl = [col.text.strip() for col in cols]
+		datas.append(tl)
+
+df = pandas.DataFrame(datas, columns=["N","name","price","previously","ADR","volume","total","sales","profit","PER","PBR"])
