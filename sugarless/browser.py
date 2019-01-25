@@ -34,10 +34,6 @@ for row in rows:
 		tl = [col.text.strip() for col in cols]
 		datas.append(tl)
 
-df = pandas.DataFrame(datas, columns=["N","name","price","previously","ADR","volume","total","sales","profit","PER","PBR"])
-target = ['volume','total','sales','profit','PER','PBR']
-df[target] = df[target].apply(pandas.to_numeric)
-df['PSR'] = df.total/df.sales
-
-df = df.sort_values('PSR')
-print(df[(df.PER > 0) & (df.PER < 23) & (df.PBR > 0) & (df.PBR < 10) & (df.profit > 0)])
+with open('test123.csv', 'w', newline='') as f:
+	wr = csv.writer(f, quoting=csv.QUOTE_ALL)
+	wr. writerow(datas)
