@@ -32,7 +32,9 @@ def get_feed(matches):
             send_message(entry.title, entry.link)
 
 def lambda_handler(event, context):
-    get_feed()
+    with open('favorite.json') as f:
+        data = json.load(f)
+    get_feed(data['key'])
     return { 
         'message' : 'success'
     }
