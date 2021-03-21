@@ -1,0 +1,1 @@
+*/30 7-18 * * 1-5 python feed_dart.py
