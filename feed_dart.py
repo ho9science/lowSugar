@@ -2,11 +2,9 @@ import feedparser
 import os
 import json
 import requests
-from decouple import config
 
 def send_message(text, link):
-    TOKEN = config('TOKEN')
-    header = {"Authorization": 'Bearer '+TOKEN, "Content-Type":"application/x-www-form-urlencoded"}
+    header = {"Authorization": 'Bearer {token}', "Content-Type":"application/x-www-form-urlencoded"}
 
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send" 
 
