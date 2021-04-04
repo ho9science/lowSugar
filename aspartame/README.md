@@ -51,9 +51,12 @@ pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-
 python under_value.py
 ```
 
+## 주의
+만료된 credential
+
 ## 조건
 현재 데이터 정제를 위한 특정 조건은 다음과 같습니다.
-operating profit : x > 0
-PBR(price book value ratio) : 0 < x <0.7
-PER(price earning ratio) : 0 < x < 11.5
-PSR(price selling ratio) : x < 0.55
+- operating profit : x > 0
+- PBR(price book value ratio) : 0 < x <0.7
+- PER(price earning ratio) : 0 < x < 11.5
+- PSR(price selling ratio) : x < 0.55

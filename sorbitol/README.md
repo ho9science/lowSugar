@@ -39,8 +39,6 @@ pip install requests
 3. aws lambda
 aws lambda는 선택입니다. lambda는 심플하지만 강력한 도구로 사용해보세요.
 
-- [클라우드워치 이벤트](https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)
-- [클라우드워치 cron 표현식](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html)
 - [python으로 lambda 함수 빌드](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/lambda-python.html)
 - [python 3.8에서 lambda 함수 만들기](https://docs.aws.amazon.com/ko_kr/lambda/latest/dg/python-package-create.html)
 
@@ -53,6 +51,17 @@ aws lambda는 선택입니다. lambda는 심플하지만 강력한 도구로 사
 6. cd ..
 7. zip -g sorbitol.zip lambda_function.py
 8. zip -g sorbitol.zip favorite.json
+9. upload lamdba
+```
+
+4. cloudwatch
+aws cloudwatch로 이벤트 패턴 또는 일정을 설정하여 대상을 호출할 수 있습니다.
+
+- [클라우드워치 이벤트](https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)
+- [클라우드워치 cron 표현식](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html)
+```
+Cron표현식(UTC기준)
+0/30 22-10 ? * SUN-FRI *
 ```
 
 ## 로컬 사용법 (mac)
