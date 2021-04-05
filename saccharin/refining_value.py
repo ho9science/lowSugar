@@ -34,7 +34,9 @@ def refine_data():
 	df.drop(df.columns[[2,3,5,6,11,12,13]], axis=1, inplace=True)
 	df.columns = ['id', 'name', 'close', 'open', 'high', 'low', 'volume']
 	df['date'] = datetime.today().strftime('%Y-%m-%d')
-
+	find_diff(df)
+	save_stockcode(df)
+	del df["name"]
 	result = df.to_json(orient="records")
 	return json.loads(result)
 
@@ -44,13 +46,38 @@ def store_data(sugars):
 	table = dynamodb.Table('stock')
 
 	print(table.creation_date_time)
-
+	start_time = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+	print("start: ", start_time)
 	with table.batch_writer() as batch:
 		for sugar in sugars:
 
 			batch.put_item(
 			Item=sugar
 			)
+			
+	endtime = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+	print("end: ", endtime)
+
+def save_stockcode(df):
+	df = df.loc[:,['id','name']]
+	df = df.set_index('id')
+	data = df.to_dict("index")
+	with open('stockcode.json', 'w') as outfile:
+		json.dump(data, outfile, ensure_ascii=False)
+
+def find_diff(df):
+	try:
+		df2 = pd.read_json("stockcode.json", orient='index')
+		deletedCode = df.index.difference(df2.index)
+		addedCode = df2.index.difference(df.index)
+
+		print('--- 삭제 목록 ---')
+		print('\n'.join(map(str, deletedCode)))
+		print('--- 추가 목록 ---')
+		print('\n'.join(map(str, addedCode)))
+
+	except ValueError:
+		print("not find stockcode")
 
 if __name__ == '__main__':
 	getDailyData()

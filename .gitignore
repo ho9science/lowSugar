@@ -1,5 +1,6 @@
 *.html
 *.json
+*.xml
 */__pycache__/*
 *.pyc
 *.txt
