@@ -67,6 +67,8 @@ def save_stockcode(df):
 
 def find_diff(df):
 	try:
+		df = df.loc[:,['id','name']]
+		df = df.set_index('id')
 		df2 = pd.read_json("stockcode.json", orient='index')
 		deletedCode = df.index.difference(df2.index)
 		addedCode = df2.index.difference(df.index)
