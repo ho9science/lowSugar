@@ -12,14 +12,14 @@ def send_message(text, link):
         "object_type": "text",
         "text": text,
         "link": {
-            "web_url": link,
+            "web_url": link
         },
         "button_title": "공시 확인"
     }
     data = {"template_object": json.dumps(post)}
     response = requests.post(url, headers=header, data=data)
     if not response:
-        print('An error has occurred: '+ response.content)
+        print('An error has occurred: ')
     return response.status_code
 
 def get_feed(matches):
