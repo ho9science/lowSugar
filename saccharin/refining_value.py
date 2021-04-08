@@ -28,8 +28,7 @@ def getDailyData():
 	driver.close()
 
 def refine_data():
-	list_of_files = glob.glob('/Users/henry/Downloads/*.csv')
-	latest_file = max(list_of_files, key=os.path.getctime)
+	latest_file = get_recent_file()
 	df = pd.read_csv(latest_file, encoding="cp949")
 	df.drop(df.columns[[2,3,5,6,11,12,13]], axis=1, inplace=True)
 	df.columns = ['id', 'name', 'close', 'open', 'high', 'low', 'volume']
@@ -81,7 +80,19 @@ def find_diff(df):
 	except ValueError:
 		print("not find stockcode")
 
+def get_recent_file():
+	list_of_files = glob.glob('/Users/henry/Downloads/*.csv')
+	return max(list_of_files, key=os.path.getctime)
+
+def is_contains_today():
+	today = datetime.today().strftime('%Y%m%d')
+	latest_file = get_recent_file()
+	if(today in latest_file):
+		return True
+	return False
+
 if __name__ == '__main__':
-	getDailyData()
+	if(is_contains_today == False):
+		getDailyData()
 	data = refine_data()
 	store_data(data)
