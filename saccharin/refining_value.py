@@ -87,12 +87,12 @@ def get_recent_file():
 def is_contains_today():
 	today = datetime.today().strftime('%Y%m%d')
 	latest_file = get_recent_file()
-	if(today in latest_file):
+	if today in latest_file:
 		return True
 	return False
 
 if __name__ == '__main__':
-	if(is_contains_today == False):
+	if(is_contains_today() == False):
 		getDailyData()
 	data = refine_data()
 	store_data(data)
