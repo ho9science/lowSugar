@@ -1,6 +1,7 @@
 # lowSugar
 
 lowSugar는 데이터 수집 및 데이터 분석 및 시각화를 위한 파이썬 기반 프로젝트입니다.
+주식 데이터와 부동산 데이터를 통해 모두가 꿀빨 수 있는 환경을 구축하고 공유하는 것이 목표입니다.
 
 
 ## aspartame 
@@ -18,15 +19,13 @@ lowSugar는 데이터 수집 및 데이터 분석 및 시각화를 위한 파이
 
 솔비톨은 공시 데이터를 파싱 및 저장할 수 있습니다.
 
-## sucrose
-[수크로스](https://ko.wikipedia.org/wiki/%EC%88%98%ED%81%AC%EB%A1%9C%EC%8A%A4)는 설탕입니다.
-
-수크로스는 python기반의 데이터 수집, 저장, 분석 및 시각화 예제들을 담고 있습니다.
-
 ## sucralose
 [수크랄로스](https://ko.wikipedia.org/wiki/%EC%88%98%ED%81%AC%EB%9E%84%EB%A1%9C%EC%8A%A4)는 합성 감미료의 일종입니다.
 
 수크랄로스는 xml 데이터를 파싱하여 AWS Dynamodb에 저장할 수 있습니다.
+
+## example
+python기반의 데이터 수집, 저장, 분석 및 시각화 예제로 **꿀빠는 법**을 담고 있습니다.
 
 
 ## Requirements

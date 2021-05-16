@@ -5,6 +5,10 @@
 *.pyc
 *.txt
 *.csv
+!example/data/*.json
+!example/data/*.csv
+!example/data/*.txt
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
