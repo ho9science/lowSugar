@@ -1,8 +1,8 @@
 # aspartame
-아스파탐은 특정 사이트의 데이터를 크롤링하고 특정 조건에 맞추어 정리한 후 구글 스프레드 시트로 데이터를 생성하고 특정 유저의 구글 계정을 공유하고 이를 메일로 보낼 수 있습니다.
+아스파탐은 웹에서 데이터를 크롤링하고 특정 조건에 맞추어 정리한 후 구글 스프레드 시트로 데이터를 생성하고 특정 유저의 구글 계정을 공유하고 이를 메일로 보낼 수 있습니다.
 
 ## prerequisite
-python 3.8 환경에서 테스트하고 실행을 확인하였습니다.
+python 3.11 환경에서 테스트하고 실행을 확인하였습니다.
 
 1. python 라이브러리
 ```
@@ -48,15 +48,8 @@ pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-
 
 ## 로컬 사용법
 ```
-python under_value.py
+python taste.py
 ```
 
 ## 주의
 만료된 credential
-
-## 조건
-현재 데이터 정제를 위한 특정 조건은 다음과 같습니다.
-- operating profit : x > 0
-- PBR(price book value ratio) : 0 < x <0.7
-- PER(price earning ratio) : 0 < x < 11.5
-- PSR(price selling ratio) : x < 0.55
